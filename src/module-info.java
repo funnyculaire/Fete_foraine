@@ -1,0 +1,2 @@
+module Fete_forraine {
+}
