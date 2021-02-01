@@ -24,7 +24,7 @@ public class Attraction extends Stand{
 	}
 
 	public Attraction() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public boolean authorisation(Visiteur visiteur){

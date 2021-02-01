@@ -14,27 +14,26 @@ public class Visiteur extends Individu implements IAction{
 	
 	private ArrayList<Service> services;
 
-	public Visiteur(int age, float taille, float poids, boolean invalide, boolean vip, ArrayList<Service> services) {
+	public Visiteur(int age, float taille, float poids, boolean invalide, boolean vip) {
 		super();
 		this.age = age;
 		this.taille = taille;
 		this.poids = poids;
 		this.invalide = invalide;
 		this.vip = vip;
-		this.services = services;
+		this.services = new ArrayList<Service>();
 	}
 	
 	public Visiteur() {
-		// TODO Auto-generated constructor stub
+
 	}
 
-	public void setVisiteur (int age, float taille, float poids, boolean invalide, boolean vip, ArrayList<Service> services) {
+	public void setVisiteur(int age, float taille, float poids, boolean invalide, boolean vip) {
 		this.age = age;
 		this.taille = taille; 
 		this.poids = poids;
 		this.invalide = invalide;
 		this.vip = vip;
-		this.services = services;
 	}
 
 	@Override

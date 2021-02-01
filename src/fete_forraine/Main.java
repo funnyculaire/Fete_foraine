@@ -15,7 +15,7 @@ public class Main {
 		Visiteur visiteur = new Visiteur(); 
 		
 		ArrayList<Service> services = new ArrayList<Service>();
-		visiteur.setVisiteur(15,190.0f,120.0f,true,true,services);
+		visiteur.setVisiteur(15,190.0f,120.0f,true,true);
 		
 		System.out.println(visiteur.toString());
 	}
