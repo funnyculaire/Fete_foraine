@@ -100,11 +100,14 @@ public class Visiteur extends Individu implements IAction{
 		int nombreEmploye = employes.size();
 		Random random = new Random();
 		int chiffreEmploye = random.nextInt(nombreEmploye);
+		System.out.println(chiffreEmploye);
 		int nombreDeVenteEmploye = employes.get(chiffreEmploye).getNombreVente();
 		employes.get(chiffreEmploye).setNombreVente(nombreDeVenteEmploye+1);
 		stand.majHistorique(employes.get(chiffreEmploye), this, service);
 
 		this.services.add(service);
 		System.out.println("Vous avez acheté : "+service.getNom());
+
+		System.out.println(employes.get(chiffreEmploye).toString());
 	}
 }

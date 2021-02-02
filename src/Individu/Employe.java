@@ -17,6 +17,16 @@ public class Employe extends Individu{
 		this.salaire = salaire;
 	}
 
+	@Override
+	public String toString() {
+		return "Employe{" +
+				"poste='" + poste + '\'' +
+				", salaire=" + salaire +
+				", nom='" + nom + '\'' +
+				", prenom='" + prenom + '\'' +
+				'}';
+	}
+
 	public Employe() {
 
 	}
