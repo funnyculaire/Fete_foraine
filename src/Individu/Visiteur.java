@@ -3,7 +3,11 @@ package Individu;
 import java.util.ArrayList;
 import Item.Produit;
 import Item.Service;
+import Stand.Stand;
 import fete_forraine.IAction;
+
+import java.util.Date;
+import java.util.Random;
 
 public class Visiteur extends Individu implements IAction{ 
 	private int age;
@@ -14,8 +18,8 @@ public class Visiteur extends Individu implements IAction{
 	
 	private ArrayList<Service> services;
 
-	public Visiteur(int age, float taille, float poids, boolean invalide, boolean vip) {
-		super();
+	public Visiteur(int age, float taille, float poids, boolean invalide, boolean vip, String nom, String prenom) {
+		super(nom, prenom);
 		this.age = age;
 		this.taille = taille;
 		this.poids = poids;
@@ -91,8 +95,16 @@ public class Visiteur extends Individu implements IAction{
 	}
 
 	@Override
-	public void acheter(Service service) {
+	public void acheter(Service service, Equipe equipe, Stand stand) {
+		ArrayList<Employe> employes = equipe.getEmploye();
+		int nombreEmploye = employes.size();
+		Random random = new Random();
+		int chiffreEmploye = random.nextInt(nombreEmploye);
+		int nombreDeVenteEmploye = employes.get(chiffreEmploye).getNombreVente();
+		employes.get(chiffreEmploye).setNombreVente(nombreDeVenteEmploye+1);
+		stand.majHistorique(employes.get(chiffreEmploye), this, service);
+
 		this.services.add(service);
-		
+		System.out.println("Vous avez acheté : "+service.getNom());
 	}
 }

@@ -4,7 +4,17 @@ public class Produit extends Service{
 
 	private String categorie;
 
-	public Produit(String nom, float prix) {
+	public String getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
+
+	public Produit(String nom, float prix, String categorie) {
+
 		super(nom, prix);
+		this.categorie = categorie;
 	}
 }
