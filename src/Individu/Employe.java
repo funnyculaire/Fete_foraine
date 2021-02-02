@@ -3,7 +3,7 @@ package Individu;
 public class Employe extends Individu{
 	private String poste;
 	private float salaire;
-	private static int nombreVente = 0;
+	private int nombreVente = 0;
 
 	public Employe(String nom, String prenom, String poste, float salaire) {
 		super(nom, prenom);

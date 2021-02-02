@@ -28,7 +28,7 @@ public class Equipe {
 			int value = Math.max(max1, max2);
 			if(value == max2) meilleurEmploye = employe;
 		}
-		System.out.println(meilleurEmploye.getNombreVente()+" "+meilleurEmploye.getPrenom());
+
 		return meilleurEmploye;
 	}
 

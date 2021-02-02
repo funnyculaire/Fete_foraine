@@ -39,7 +39,7 @@ public class Stand {
 	}
 
 	public void majHistorique(Employe employe, Visiteur visiteur, Service service){
-		historique.add("L'employe : "+employe.getNom()+" "+employe.getPrenom()+" a vendu"+service.getNom()+
-				"au prix de"+service.getPrix());
+		historique.add("L'employe : "+employe.getNom()+" "+employe.getPrenom()+" a vendu "+service.getNom()+
+				" au prix de"+service.getPrix());
 	}
 }

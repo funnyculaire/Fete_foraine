@@ -41,7 +41,6 @@ public class Main {
 		if(!attraction.authorisation(visiteur)) System.out.println("Le visiteur n'est pas autorisé");
 		else System.out.println("Le visiteur est autorisé");
 
-
 		System.out.println(equipe.meilleurEmploye().toString());
 
 
