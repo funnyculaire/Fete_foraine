@@ -18,6 +18,7 @@ import java.util.Scanner;
 public class Main {
 
 	final static String path = "src/percistence/data";
+	final static String pathAdmin = "src/percistence/admin.ser";
 
 	final static int ADMIN = 1;
 	final static int VISITEUR = 2;
@@ -185,6 +186,8 @@ public class Main {
 		}
 	}
 
+
+
 	public static void main(String[] args) {
 
 		//Instance
@@ -221,14 +224,19 @@ public class Main {
 		//System.out.println(equipe.meilleurEmploye().toString());
 
 		//dataReader();
-		//FileReaderParser fileReaderParser = new FileReaderParser();
+		FileReaderParser fileReaderParser = new FileReaderParser();
 
 		//int numeroDeReservation = fileReaderParser.numberOfReservation(path);
 		//System.out.println("Numero de reservation : " + numeroDeReservation);
 		//Reservation reservation = new Reservation(numeroDeReservation, Tarification.ETUDIANT);
 		//dataWriter(reservation, visiteur, path);
 
-		mainFunction();
+
+
+		//mainFunction();
+
+		//fileReaderParser.writeToJson();
+		fileReaderParser.readAdminData(pathAdmin);
 
 
 	}
