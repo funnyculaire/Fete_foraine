@@ -3,6 +3,13 @@ package Item;
 public class Produit extends Service{
 
 	private String categorie;
+	private Goodies goodies;
+	private Snacks snacks;
+
+	public Produit(String nom, float prix, Goodies goodies) {
+		super(nom, prix);
+		this.goodies = goodies;
+	}
 
 	public String getCategorie() {
 		return categorie;
@@ -17,4 +24,6 @@ public class Produit extends Service{
 		super(nom, prix);
 		this.categorie = categorie;
 	}
+
+
 }

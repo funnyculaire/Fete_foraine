@@ -4,9 +4,7 @@ import Individu.Employe;
 import Individu.Equipe;
 import Individu.Individu;
 import Individu.Visiteur;
-import Item.Cadeau;
-import Item.Produit;
-import Item.Service;
+import Item.*;
 import Stand.Attraction;
 import Stand.Boutique;
 import Stand.Restaurant;
@@ -24,6 +22,10 @@ public class Main {
 	final static int VISITEUR = 2;
 
 	final static int RESERVATION = 1;
+	final static int ACHAT = 2;
+
+	final static int BOUTIQUE = 1;
+	final static int RESTAURATION = 2;
 
 	public static void dataReader(){
 		FileReaderParser fileReaderParser = new FileReaderParser();
@@ -62,7 +64,7 @@ public class Main {
 			return choix;
 
 		}
-		else{
+		else if(state == 2){
 
 			//Second appel
 			Scanner scanner = new Scanner(System.in);  // Create a Scanner object
@@ -80,8 +82,63 @@ public class Main {
 
 			return choix;
 		}
+		else if(state == 3){
+			//Premier appel
+			Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+			System.out.println("---- ESPACE STAND-------");
+			System.out.println("1. BOUTIQUE\n2. RESTAURATION ");
+
+			do{
+				System.out.println("Votre choix : ");
+				choix = scanner.nextInt();
+				System.out.println(choix);
+				if(choix != 1 && choix !=2 ){
+					System.out.println("choix invalide ! veuillez recommencer svp ");
+				}
+			}while(choix != 1 && choix !=2);
+
+			return choix;
+		}
+		else if(state == 4){
+			//Premier appel
+			Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+			System.out.println("---- ESPACE ADMIN-------");
+			System.out.println("1. AFFICHAGE ÉQUIPE\n2. AFFICHAGE EMPLOYÉ\n3. AFFICHAGE RÉSERVATION ");
+
+			do{
+				System.out.println("Votre choix : ");
+				choix = scanner.nextInt();
+				System.out.println(choix);
+				if(choix != 1 && choix !=2 ){
+					System.out.println("choix invalide ! veuillez recommencer svp ");
+				}
+			}while(choix != 1 && choix !=2 && choix != 3);
+
+			return choix;
+		}
+		else if(state == 5){
+			//Premier appel
+			Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+			System.out.println("EMPLOYÉ DU MOIS ?");
+
+			do{
+				System.out.println("Votre choix : ");
+				choix = scanner.nextInt();
+				System.out.println(choix);
+				if(choix != 1 && choix !=2 ){
+					System.out.println("choix invalide ! veuillez recommencer svp ");
+				}
+			}while(choix != 1 && choix !=2);
+
+			return choix;
+		}
+		else{
+			return 1;
+		}
 
 	}
+
+
 
 	public static Tarification getTarification(){
 		Tarification choix = null;
@@ -157,15 +214,168 @@ public class Main {
 
 		return actualNumberOfReservation;
 	}
+
+	public static Goodies getGoodies(){
+		Goodies choix = null;
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Voici les types de Goodies ");
+		int i =  1;
+		for( Goodies goodie : Goodies.values()){
+			System.out.println(i+ ". "+goodie);
+			i++;
+		}
+
+		System.out.println("Choississez le numero correspondant à votre goodies : ");
+		int choixGoodie = scanner.nextInt();
+
+		switch (choixGoodie){
+
+			case 1 :
+				choix = Goodies.PELUCHE;
+				break;
+
+			case 2:
+				choix = Goodies.BALLON;
+				break;
+
+			case 3:
+				choix = Goodies.FIGURINE;
+				break;
+
+			case 4:
+				choix = Goodies.DEGUISEMENT;
+				break;
+
+			case 5:
+				choix = Goodies.ÉPÉE;
+				break;
+
+			case 6:
+				choix = Goodies.BOUCLIER;
+				break;
+
+			case 7:
+				choix = Goodies.LIVRE;
+				break;
+
+			case 8:
+				choix = Goodies.POUPÉE;
+				break;
+
+			case 9:
+				choix = Goodies.MUG;
+				break;
+
+			case 10:
+				choix = Goodies.BAGUE;
+				break;
+
+		}
+
+		return  choix;
+	}
+
+	public static void choiceGoodies(){
+
+
+		Goodies goodies = getGoodies();
+
+		System.out.println("Votre achat : " + goodies);
+
+
+	}
+
+
+	public static Snacks getSnacks(){
+		Snacks choix = null;
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Voici les types de Snacks ");
+		int i =  1;
+		for( Snacks snack : Snacks.values()){
+			System.out.println(i+ ". "+snack);
+			i++;
+		}
+
+		System.out.println("Choississez le numero correspondant à votre snacks : ");
+		int choixSnack = scanner.nextInt();
+
+		switch (choixSnack){
+
+			case 1 :
+				choix = Snacks.CHURROS;
+				break;
+
+			case 2:
+				choix = Snacks.GAUFFRE;
+				break;
+
+			case 3:
+				choix = Snacks.GLACE;
+				break;
+
+			case 4:
+				choix = Snacks.BARBE_À_PAPA;
+				break;
+
+			case 5:
+				choix = Snacks.CREPE;
+				break;
+
+			case 6:
+				choix = Snacks.GRANITÉ;
+				break;
+
+			case 7:
+				choix = Snacks.BONBONS;
+				break;
+
+			case 8:
+				choix = Snacks.COCA;
+				break;
+
+			case 9:
+				choix = Snacks.FANTA;
+				break;
+
+			case 10:
+				choix = Snacks.OASIS;
+				break;
+
+			case 11:
+				choix = Snacks.VITTEL;
+				break;
+
+			case 12:
+				choix = Snacks.CAFÉ;
+				break;
+
+			case 13:
+				choix = Snacks.THÉ;
+				break;
+
+		}
+
+		return  choix;
+	}
+
+	public static void choiceSnacks(){
+
+		Snacks snacks = getSnacks();
+
+		System.out.println("Vous achetez ce snacks :" + snacks + "bon apétit ! ");
+
+	}
+
+
 	public static void mainFunction(){
 		int userChoix = getUserChoix(1);
 
 
-		if(userChoix == VISITEUR){
+		if(userChoix == VISITEUR) {
 
-			int visteurChoix = getUserChoix(2);
+			int visiteurChoix = getUserChoix(2);
 
-			if(visteurChoix == RESERVATION){
+			if (visiteurChoix == RESERVATION) {
 				int clientReservation = saveReservation();
 
 				System.out.println("Votre reservation a bien été enregistrée !\nVotre numéro de reservation est le :");
@@ -176,13 +386,24 @@ public class Main {
 				System.out.println(reservation);
 
 
-			}else{
+			} else {
+				//PARTIE ACHAT
+
+				if (visiteurChoix == ACHAT) {
+					visiteurChoix = getUserChoix(3);
+					if (visiteurChoix == BOUTIQUE) {
+						choiceGoodies();
+					} else {
+						//PARTIE SNACKS
+
+						visiteurChoix = getUserChoix(4);
+						if (visiteurChoix == RESTAURATION) {
+							choiceSnacks();
+						}
+					}
+				}
 
 			}
-
-		}
-		else{
-			//ADMIN
 		}
 	}
 
@@ -224,7 +445,7 @@ public class Main {
 		//System.out.println(equipe.meilleurEmploye().toString());
 
 		//dataReader();
-		FileReaderParser fileReaderParser = new FileReaderParser();
+		//FileReaderParser fileReaderParser = new FileReaderParser();
 
 		//int numeroDeReservation = fileReaderParser.numberOfReservation(path);
 		//System.out.println("Numero de reservation : " + numeroDeReservation);
@@ -233,10 +454,10 @@ public class Main {
 
 
 
-		//mainFunction();
+		mainFunction();
 
 		//fileReaderParser.writeToJson();
-		fileReaderParser.readAdminData(pathAdmin);
+		//fileReaderParser.readAdminData(pathAdmin);
 
 
 	}
