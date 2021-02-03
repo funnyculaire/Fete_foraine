@@ -1,6 +1,7 @@
 package percistence;
 
 import Individu.Individu;
+import Individu.Employe;
 import fete_forraine.Reservation;
 
 import java.io.*;
@@ -16,14 +17,15 @@ public class FileReaderParser {
     public FileReaderParser(){
 
     }
-    public void fileWriter(Reservation reservation, Individu individu, String path){
+
+
+    public void fileWriterReservation(Reservation reservation, Individu individu, String path){
         try{
             File file = new File(path);
 
-
             if (file.createNewFile()) {
                 //exist
-                System.out.println("File created: " + file.getName());
+                System.out.println("File is created: " + file.getName());
 
             } else {
                 //do
@@ -36,11 +38,15 @@ public class FileReaderParser {
 
                 DecimalFormatSymbols dfs = new DecimalFormatSymbols();
                 dfs.setDecimalSeparator('.');
-
+                //ERREUR EN CAS DE VIRGULE ","
                 DecimalFormat decimalFormat = new DecimalFormat("#.##");
                 decimalFormat.setDecimalFormatSymbols(dfs);
 
+                //Ecrit le prix au bon format
                 float prixToWrite = Float.parseFloat(decimalFormat.format(reservation.getPrix()));
+
+
+                //Donnée à ecrire dans le fichier "data"
                 String dataToWrite = "\nNumero de reservation  : " + numeroReservation
                         +" Nom :"+ individu.getNom()
                         +" Prenom :"+ individu.getPrenom()
@@ -82,7 +88,7 @@ public class FileReaderParser {
         return i;
     }
 
-    public ArrayList<String> fileReader(String path){
+    public ArrayList<String> fileReaderReservation(String path){
 
         ArrayList<String> data = new ArrayList<String>();
         try{
@@ -104,10 +110,61 @@ public class FileReaderParser {
         return data;
     }
 
-    public void writeAdminData(String path, String username, String password){
+    public void writeEmloyesData(String path, ArrayList<Employe> employes, HashMap<String, String> employesData){
 
-        HashMap<String, String> adminData = new HashMap<String, String>();
-        adminData.put(username, password);
+        //HashMap<String, String> adminData = new HashMap<String, String>();
+
+        for(Employe employe : employes){
+            employesData.putIfAbsent(employe.getNom(), Integer.toString(employe.getNombreVente()));
+        }
+        //adminData.putIfAbsent(username, password);
+
+        try{
+            FileOutputStream fileOutputStream = new FileOutputStream(path);
+            ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream);
+
+            outputStream.writeObject(employesData);
+            outputStream.close();
+            fileOutputStream.close();
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public HashMap<String, String> readEmployesData(String path){
+        HashMap<String, String> employesData = new HashMap<String, String>();
+
+        try{
+            FileInputStream fileInputStream = new FileInputStream(path);
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+
+            employesData = (HashMap<String, String>) objectInputStream.readObject();
+
+            objectInputStream.close();
+            fileInputStream.close();
+
+            //System.out.println(adminData.toString());
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return employesData;
+    }
+
+    public void writeAdminData(String path, String username, String password, HashMap<String, String> adminData){
+
+        //HashMap<String, String> adminData = new HashMap<String, String>();
+        adminData.putIfAbsent(username, password);
 
         try{
             FileOutputStream fileOutputStream = new FileOutputStream(path);
@@ -126,7 +183,7 @@ public class FileReaderParser {
 
     }
 
-    public void readAdminData(String path){
+    public HashMap<String, String> readAdminData(String path){
         HashMap<String, String> adminData = new HashMap<String, String>();
 
         try{
@@ -138,7 +195,7 @@ public class FileReaderParser {
             objectInputStream.close();
             fileInputStream.close();
 
-            System.out.println(adminData.toString());
+            //System.out.println(adminData.toString());
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -148,7 +205,6 @@ public class FileReaderParser {
             e.printStackTrace();
         }
 
-
-
+        return adminData;
     }
 }

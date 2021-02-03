@@ -11,39 +11,26 @@ import java.util.Random;
 
 public class Visiteur extends Individu implements IAction{ 
 	private int age;
-	private float taille;
-	private float poids;
-	private boolean invalide;
-	private boolean vip;
-	
 	private ArrayList<Service> services;
 
-	public Visiteur(int age, float taille, float poids, boolean invalide, boolean vip, String nom, String prenom) {
+	public Visiteur(int age, String nom, String prenom) {
 		super(nom, prenom);
 		this.age = age;
-		this.taille = taille;
-		this.poids = poids;
-		this.invalide = invalide;
-		this.vip = vip;
 		this.services = new ArrayList<Service>();
 	}
 	
 	public Visiteur() {
-
+		this.services = new ArrayList<Service>();
 	}
 
 	public void setVisiteur(int age, float taille, float poids, boolean invalide, boolean vip) {
 		this.age = age;
-		this.taille = taille; 
-		this.poids = poids;
-		this.invalide = invalide;
-		this.vip = vip;
 	}
 
 	@Override
 	public String toString() {
-		return "Visiteur [age=" + age + ", taille=" + taille + ", poids=" + poids + ", invalide=" + invalide + ", vip="
-				+ vip + ", services=" + services + "]";
+		return "Visiteur [age=" + age
+				+ ", services=" + services + "]";
 	}
 
 	public int getAge() {
@@ -52,38 +39,6 @@ public class Visiteur extends Individu implements IAction{
 
 	public void setAge(int age) {
 		this.age = age;
-	}
-
-	public float getTaille() {
-		return taille;
-	}
-
-	public void setTaille(float taille) {
-		this.taille = taille;
-	}
-
-	public float getPoids() {
-		return poids;
-	}
-
-	public void setPoids(float poids) {
-		this.poids = poids;
-	}
-
-	public boolean isInvalide() {
-		return invalide;
-	}
-
-	public void setInvalide(boolean invalide) {
-		this.invalide = invalide;
-	}
-
-	public boolean isVip() {
-		return vip;
-	}
-
-	public void setVip(boolean vip) {
-		this.vip = vip;
 	}
 
 	public ArrayList<Service> getServices() {
@@ -104,7 +59,7 @@ public class Visiteur extends Individu implements IAction{
 		int nombreDeVenteEmploye = employes.get(chiffreEmploye).getNombreVente();
 		employes.get(chiffreEmploye).setNombreVente(nombreDeVenteEmploye+1);
 		stand.majHistorique(employes.get(chiffreEmploye), this, service);
-
+		System.out.println(service.toString());
 		this.services.add(service);
 		System.out.println("Vous avez acheté : "+service.getNom());
 

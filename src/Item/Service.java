@@ -9,7 +9,11 @@ public class Service{
 		this.prix = prix;
 	}
 
-	public String getNom() {
+    public Service() {
+
+    }
+
+    public String getNom() {
 		return nom;
 	}
 

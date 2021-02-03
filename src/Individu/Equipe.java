@@ -14,14 +14,12 @@ public class Equipe {
 	String nom_equipe;
 	Employe chef_equipe;
 	String missions;
-	Boolean jour;
 	private ArrayList<Employe> employes;
 
-	public Equipe(String nom_equipe, Employe chef_equipe, String missions, Boolean jour, ArrayList<Employe> employe) {
+	public Equipe(String nom_equipe, Employe chef_equipe, String missions, ArrayList<Employe> employe) {
 		this.nom_equipe = nom_equipe;
 		this.chef_equipe = chef_equipe;
 		this.missions = missions;
-		this.jour = jour;
 		this.employes = employe;
 	}
 
@@ -70,13 +68,9 @@ public class Equipe {
 		this.missions = missions;
 	}
 
-	public Boolean getJour() {
-		return jour;
-	}
 
-	public void setJour(Boolean jour) {
-		this.jour = jour;
-	}
+
+
 
 	public ArrayList<Employe> getEmploye() {
 		return employes;
@@ -86,5 +80,13 @@ public class Equipe {
 		this.employes = employes;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Equipe{" +
+				"nom_equipe='" + nom_equipe + '\'' +
+				", chef_equipe=" + chef_equipe +
+				", missions='" + missions + '\'' +
+				", employes=" + employes +
+				'}';
+	}
 }

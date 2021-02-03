@@ -11,6 +11,7 @@ public class Boutique extends Stand{
 	public Boutique(String nom_stand, String type_stand, String localisation, Equipe equipes, ArrayList<Produit> produits) {
 		super(nom_stand, type_stand, localisation, equipes);
 		this.produits = produits;
+		initProduct();
 	}
 
 	public ArrayList<Produit> getProduits() {
@@ -25,7 +26,8 @@ public class Boutique extends Stand{
 
 	public void initProduct (){
 		for (Goodies goodie : Goodies.values()){
-			Produit produit = new Produit();
+			Produit produit = new Produit(goodie.name(), 5f, "", goodie );
+			this.produits.add(produit);
  		}
 	}
 }
