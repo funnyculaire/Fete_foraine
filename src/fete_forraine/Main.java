@@ -385,7 +385,6 @@ public class Main {
 				String reservation = reservations.get(clientReservation);
 				System.out.println(reservation);
 
-
 			} else {
 				//PARTIE ACHAT
 
@@ -396,7 +395,7 @@ public class Main {
 					} else {
 						//PARTIE SNACKS
 
-						visiteurChoix = getUserChoix(4);
+						visiteurChoix = getUserChoix(3);
 						if (visiteurChoix == RESTAURATION) {
 							choiceSnacks();
 						}
@@ -404,7 +403,24 @@ public class Main {
 				}
 
 			}
+		} else if ( userChoix == ADMIN) {
+			int visiteurChoix = getUserChoix( 4);
+			/*if (visiteurChoix == EQUIPE){
+				affichageEquipe();
+			}
+			else if (visiteurChoix == EMPLOYE){
+				affichageEmploye();
+				if (visiteurChoix == BESTEMPLOYE){
+					affichageBestEmploye;
+				}
+			}
+			else {
+				affichageListReservation();
+			}*/
+		} else {
+			return ;
 		}
+
 	}
 
 
