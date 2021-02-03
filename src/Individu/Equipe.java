@@ -32,6 +32,12 @@ public class Equipe {
 		return meilleurEmploye;
 	}
 
+	public void ArrayEquipe(Equipe equipe){
+		Equipe equipe1 = new Equipe("Delta", employes.get(4), "Restaurant", true, employes);
+		Equipe equipe2 = new Equipe("Beta", employes.get(22), "Boutique", true, employes);
+		Equipe equipe3 = new Equipe("Alpha", employes.get(23), "Attraction", true, employes);
+	}
+
 	public String getNom_equipe() {
 		return nom_equipe;
 	}
