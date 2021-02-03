@@ -3,6 +3,7 @@ package Stand;
 import java.util.ArrayList;
 
 import Individu.Equipe;
+import Item.Goodies;
 import Item.Produit;
 
 public class Boutique extends Stand{
@@ -22,4 +23,9 @@ public class Boutique extends Stand{
 
 	private ArrayList<Produit> produits;
 
+	public void initProduct (){
+		for (Goodies goodie : Goodies.values()){
+			Produit produit = new Produit();
+ 		}
+	}
 }

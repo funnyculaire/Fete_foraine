@@ -40,8 +40,6 @@ public class Attraction extends Stand{
 
 	@Override
 	public void majHistorique(Employe employe, Visiteur visiteur, Service service) {
-
-
 		historique.add("L'employe : "+employe.getNom()+" "+employe.getPrenom()+" a offert"+service.getNom());
 	}
 }

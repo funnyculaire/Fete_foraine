@@ -8,8 +8,10 @@ import Item.*;
 import Stand.Attraction;
 import Stand.Boutique;
 import Stand.Restaurant;
+import Stand.Stand;
 import percistence.FileReaderParser;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -138,8 +140,6 @@ public class Main {
 
 	}
 
-
-
 	public static Tarification getTarification(){
 		Tarification choix = null;
 		Scanner scanner = new Scanner(System.in);
@@ -187,6 +187,7 @@ public class Main {
 
 		return  choix;
 	}
+
 	public static int saveReservation(){
 
 		Scanner scanner = new Scanner(System.in);
@@ -285,7 +286,6 @@ public class Main {
 
 	}
 
-
 	public static Snacks getSnacks(){
 		Snacks choix = null;
 		Scanner scanner = new Scanner(System.in);
@@ -366,7 +366,6 @@ public class Main {
 
 	}
 
-
 	public static void mainFunction(){
 		int userChoix = getUserChoix(1);
 
@@ -423,7 +422,66 @@ public class Main {
 
 	}
 
+	public static void afficherEquipe(Stand stand){
+		System.out.println(stand.getEquipes().toString());
+	}
 
+	public static ArrayList<Employe> initEmployeRestaurant(){
+		ArrayList<Employe> employes = new ArrayList<Employe>();
+
+		// equipe restaurant
+		employes.add(new Employe("Axelis", "Keller", "manager", 1250f));
+		employes.add(new Employe("Karl", "Smith", "manege", 1250f));
+		employes.add(new Employe("John", "Rachid", "cuisine", 1250f));
+		employes.add(new Employe("Thomas", "Muller", "caisse", 1250f));
+		employes.add(new Employe("Will", "Cameron", "maintenance", 1250f));
+		employes.add(new Employe("Mouna", "Litchi", "cuisine", 1250f));
+		employes.add(new Employe("Conquérant", "Marc", "maintenance", 1250f));
+		employes.add(new Employe("Chariqmatique", "John", "reservation", 1250f));
+
+		return employes;
+	}
+
+	public static ArrayList<Employe> initEmployeBoutique(){
+		ArrayList<Employe> employes = new ArrayList<Employe>();
+
+		//equipe boutique
+		employes.add(new Employe("Sasuke", "Uchiha", "manager", 2001f));
+		employes.add(new Employe("Guerrier", "Kevin", "reservation", 1250f));
+		employes.add(new Employe("Michael", "Jordan", "cuisine", 1250f));
+		employes.add(new Employe("Domingues", "Cedric", "manege", 1250f));
+		employes.add(new Employe("Da-Silva", "Silvana", "manege", 1250f));
+		employes.add(new Employe("Oups", "Samantha", "manege", 1250f));
+		employes.add(new Employe("Debbouz", "Jamel", "manege", 1250f));
+		employes.add(new Employe("Charlie", "Damido", "reservation", 1149f));
+		employes.add(new Employe("Doug", "Ezperanza", "cuisine", 1290f));
+
+		return employes;
+	}
+
+	public static ArrayList<Employe> initEmployeAttraction(){
+		ArrayList<Employe> employes = new ArrayList<Employe>();
+
+		//equipe
+		employes.add(new Employe("Naruto", "Uzumaki", "manager", 2090f));
+		employes.add(new Employe("Pascal", "Dupont", "manege", 1550f));
+		employes.add(new Employe("Thierry", "L'hermitte", "reservation", 1250f));
+		employes.add(new Employe("Matéo", "Ducoin", "caisse", 1280f));
+		employes.add(new Employe("Pricillia", "Brille", "caisse", 1450f));
+		employes.add(new Employe("Sean", "Nord", "caisse", 1180f));
+		employes.add(new Employe("El Maleh", "Gad", "manege", 1250f));
+		employes.add(new Employe("Sakura", "Haruno", "accueil", 1890f));
+
+		return employes;
+	}
+
+
+	public static void afficherEmploye(Equipe equipe){
+		System.out.println(equipe.getEmploye().toString());
+	}
+
+	public static void afficherListReservation(){
+	}
 
 	public static void main(String[] args) {
 
@@ -468,7 +526,21 @@ public class Main {
 		//Reservation reservation = new Reservation(numeroDeReservation, Tarification.ETUDIANT);
 		//dataWriter(reservation, visiteur, path);
 
+		Equipe equipesRestaurant = new Equipe();
+		Equipe equipesBoutique = new Equipe();
+		Equipe equipesAttraction = new Equipe();
 
+		equipesRestaurant.setEmploye(initEmployeRestaurant());
+		equipesBoutique.setEmploye(initEmployeBoutique());
+		equipesAttraction.setEmploye(initEmployeAttraction());
+
+		equipesRestaurant.setChef_equipe(equipesRestaurant.getEmploye().get(0));
+		equipesBoutique.setChef_equipe(equipesBoutique.getEmploye().get(0));
+		equipesAttraction.setChef_equipe(equipesAttraction.getEmploye().get(0));
+
+		Restaurant restaurant = new Restaurant("Chez Tony","","Nord-Est", equipesRestaurant,"",new ArrayList<Produit>());
+		Boutique boutique = new Boutique("A la caverne d'Ali Baba","","Nord-Ouest", equipesBoutique,new ArrayList<Produit>());
+		Attraction attraction = new Attraction("Tour infernale","","Nord-Centre", equipesAttraction,12,140f,40f,2,new ArrayList<Cadeau>());
 
 		mainFunction();
 

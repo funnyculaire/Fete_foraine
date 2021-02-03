@@ -34,6 +34,10 @@ public class Stand {
 		this.historique = new ArrayList<String>();
 	}
 
+	public Equipe getEquipes() {
+		return equipes;
+	}
+
 	public Stand() {
 		super();
 	}
