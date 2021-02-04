@@ -53,7 +53,7 @@ public class Main {
 		Boutique boutique = new Boutique("A la caverne d'Ali Baba","","Nord-Ouest", equipesBoutique,new ArrayList<Produit>());
 
 		//Liste d'attraction
-		ArrayList<Attraction> attractions = new ArrayList<Attraction>();
+		ArrayList<Attraction> attractions = new ArrayList<>();
 		Attraction attractionPeche = new Attraction("Peche à la ligne ","","Nord-Centre", equipesAttraction,12,new ArrayList<Cadeau>());
 		Attraction attractionTireCorde = new Attraction("Tire à la Corde","","Nord-Est", equipesAttraction,12,new ArrayList<Cadeau>());
 		Attraction attractionChambouleTout = new Attraction("Chamboule Tout","","Nord-Ouest", equipesAttraction,12,new ArrayList<Cadeau>());
