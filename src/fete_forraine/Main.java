@@ -24,7 +24,6 @@ public class Main {
 
 	public static void main(String[] args) {
 
-
 		FileReaderParser fileReaderParser = new FileReaderParser();
 
 		//SET AND INIT EMPLOYES
@@ -33,7 +32,6 @@ public class Main {
 		employes.addAll(Menu.initEmployeAttraction());
 		employes.addAll(Menu.initEmployeBoutique());
 		employes.addAll(Menu.initEmployeRestaurant());
-
 
 		//INIT EQUIPES
 		Equipe equipesRestaurant = new Equipe();
@@ -59,7 +57,7 @@ public class Main {
 		Attraction attractionPeche = new Attraction("Peche à la ligne ","","Nord-Centre", equipesAttraction,12,new ArrayList<Cadeau>());
 		Attraction attractionTireCorde = new Attraction("Tire à la Corde","","Nord-Est", equipesAttraction,12,new ArrayList<Cadeau>());
 		Attraction attractionChambouleTout = new Attraction("Chamboule Tout","","Nord-Ouest", equipesAttraction,12,new ArrayList<Cadeau>());
-		Attraction attractionTourInfernale = new Attraction("Tour Infernale","","Sud-Est", equipesAttraction,18,new ArrayList<Cadeau>());
+		Attraction attractionTourInfernale = new Attraction("Tour Infernale (Interdit -18)","","Sud-Est", equipesAttraction,18,new ArrayList<Cadeau>());
 
 		attractions.add(attractionPeche);
 		attractions.add(attractionTireCorde);
@@ -67,7 +65,5 @@ public class Main {
 		attractions.add(attractionTourInfernale);
 
 		Menu.mainFunction(restaurant, boutique, attractions, fileReaderParser, employes);
-
-
 	}
 }

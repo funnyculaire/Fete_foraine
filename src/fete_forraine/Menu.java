@@ -16,24 +16,17 @@ public class Menu {
     final static String path = "src/percistence/data";
     final static String pathAdmin = "src/percistence/admin.ser";
     final static String pathEmployeData = "src/percistence/employeData.ser";
-
     final static int ADMIN = 1;
     final static int VISITEUR = 2;
-
     final static int RESERVATION = 1;
     final static int STAND = 2;
-
     final static int BOUTIQUE = 1;
     final static int RESTAURATION = 2;
     final static int ATTRACTION = 3;
-
     final static int EQUIPE = 1;
     final static int EMPLOYE = 2;
     final static int BESTEMPLOYE = 3 ;
     final static int LISTERESERVATION = 4;
-
-
-
 
     public static int getUserChoix(int state){
         int choix = 0;
@@ -50,27 +43,22 @@ public class Menu {
                 System.out.println(choix);
                 if(choix != 1 && choix !=2 ){
                     System.out.println("choix invalide ! veuillez recommencer svp ");
-
                 }
             }while(choix != 1 && choix !=2);
 
             return choix;
-
         }
         else if(state == 2){
-
             //Second appel
             Scanner scanner = new Scanner(System.in);  // Create a Scanner object
             System.out.println("---- ESPACE VISITEUR-------");
             System.out.println("1. RESERVATION\n2. STAND");
-
             do{
                 System.out.println("Votre choix : ");
                 choix = scanner.nextInt();
                 System.out.println(choix);
                 if(choix != 1 && choix !=2 ){
                     System.out.println("choix invalide ! veuillez recommencer svp ");
-
                 }
             }while(choix != 1 && choix !=2);
 
@@ -90,7 +78,6 @@ public class Menu {
                     System.out.println("choix invalide ! veuillez recommencer svp ");
                 }
             }while(choix != 1 && choix !=2  && choix !=3) ;
-
             return choix;
         }
         else if(state == 4){
@@ -129,7 +116,6 @@ public class Menu {
         else{
             return 1;
         }
-
     }
 
     public static Tarification getTarification(){
@@ -141,7 +127,6 @@ public class Menu {
             System.out.println(i+ ". "+tarification);
             i++;
         }
-
 
         int type_tarification = scanner.nextInt();
 
@@ -174,9 +159,7 @@ public class Menu {
             case 7:
                 choix = Tarification.SENIOR;
                 break;
-
         }
-
         return  choix;
     }
 
@@ -245,8 +228,6 @@ public class Menu {
     }
 
     public static Produit getSnacks(Restaurant restaurant){
-
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Voici les types de Snacks ");
         int i =  0;
@@ -261,21 +242,16 @@ public class Menu {
     }
 
     public static void choiceSnacks(Restaurant restaurant, Visiteur visiteur){
-
         Produit produitSnack = getSnacks(restaurant);
-
         visiteur.acheter(produitSnack, restaurant.getEquipes(),restaurant );
-
         System.out.println("Vous achetez ce snacks :" + produitSnack.getNom()+ "bon apétit ! ");
-
     }
 
     public static Attraction choiceAttraction(ArrayList<Attraction> attractions, Visiteur visiteur){
-
         boolean isOk = false;
         Attraction choixAttraction = new Attraction();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Voici les choix d'attraction : ");
+        System.out.println("Voici les différentes d'attractions, faites votre choix ! ");
         int i =  0;
         for( Attraction attraction : attractions){
             System.out.println(i+ ". "+attraction.getNom_stand());
@@ -298,8 +274,6 @@ public class Menu {
         }while (choix > attractions.size());
 
         return  choixAttraction;
-
-
     }
 
     public  static void initAllEmploye(	ArrayList<Employe> employes){
@@ -331,42 +305,32 @@ public class Menu {
             else if ( adminChoix == LISTERESERVATION){
                 affichageListReservation();
             }else{
-                System.out.println("Veuillez selectionner parmis les choix suivant");
+                System.out.println("Veuillez selectionner parmis les choix suivant :");
             }
         }while (adminChoix != EQUIPE && adminChoix != EMPLOYE && adminChoix != BESTEMPLOYE && adminChoix != LISTERESERVATION );
-
     }
 
     private static void affichageListReservation() {
         FileReaderParser fileReaderParser = new FileReaderParser();
         ArrayList<String> dataReservation = fileReaderParser.fileReaderReservation(path);
-
         System.out.println(dataReservation.toString());
     }
 
     private static void affichageBestEmploye(ArrayList<Employe> employes) {
-
         FileReaderParser fileReaderParser = new FileReaderParser();
-
         HashMap<String, String> employesData = fileReaderParser.readEmployesData(pathEmployeData);
-
         String nomEmploye = "";
         int max = 0;
         for(Employe employe : employes) {
-
             Integer data = Integer.parseInt(employesData.get(employe.getNom()));
-
             System.out.println(data);
             if(data > max){
                 System.out.println("OK");
                 max = Math.max(max, data);
                 nomEmploye = employe.getNom();
             }
-
         }
-        System.out.println("Le meilleur employé est : " + nomEmploye);
-
-
+        //System.out.println("Le meilleur employé est : " + nomEmploye);
     }
 
     public static void mainFunction(Restaurant restaurant,
@@ -380,22 +344,18 @@ public class Menu {
         do{
             userChoix = getUserChoix(1);
             if(userChoix == VISITEUR) {
-
                 Visiteur visiteur = initVisiteur();
-
-
                 int visiteurChoix;
                 do{
                     visiteurChoix = getUserChoix(2);
                     if (visiteurChoix == RESERVATION) {
                         int clientReservation = saveReservation(fileReaderParser);
 
-                        System.out.println("Votre reservation a bien été enregistrée !\nVotre numéro de reservation est le :");
+                        System.out.println("Votre reservation a bien été enregistrée !\n");
                         ArrayList<String> reservations = fileReaderParser.fileReaderReservation(path);
 
                         String reservation = reservations.get(clientReservation);
                         System.out.println(reservation);
-
                     }
                     if (visiteurChoix == STAND) {
                         int visiteurChoixStand;
@@ -414,44 +374,30 @@ public class Menu {
                                 }
                             }
                         }while(visiteurChoixStand != BOUTIQUE && visiteurChoixStand != RESTAURATION && visiteurChoixStand != ATTRACTION );
-
                     }
-
                 }while (visiteurChoix != STAND && visiteurChoix != RESERVATION);
-
-
             } else if ( userChoix == ADMIN) {
                 System.out.println("Bienvenu dans la section ADMIN");
-
                 HashMap<String, String> hashMap = fileReaderParser.readAdminData(pathAdmin);
-
-                System.out.println("Inserrer votre nom d'utilisateur : ");
-
+                System.out.println("Inserez votre nom d'utilisateur : ");
                 Scanner scanner = new Scanner(System.in);
                 String username = scanner.nextLine();
-
                 String password = hashMap.get(username);
-
-                System.out.println("Bienvenu : "+username+"\nInserrer votre mot de passe : ");
+                System.out.println("Bienvenu : "+username+"\nInserez votre mot de passe : ");
                 String inputPassword = scanner.nextLine();
 
                 if(inputPassword.equals(password)){
                     System.out.println("Vous êtes connnecté !");
-
                     Employe employe = findEmploye(username, boutique.getEquipes(), attractions.get(0).getEquipes(), restaurant.getEquipes());
                     Equipe equipe = findEquipe(employe ,boutique.getEquipes(), attractions.get(0).getEquipes(), restaurant.getEquipes());
                     uiAdmin(employe,equipe);
-
                 }
                 else{
                     System.out.println("mot de passe incorrecte");
                 }
             }
         }while(userChoix!= VISITEUR && userChoix != ADMIN);
-
-
         storeData(fileReaderParser, employes);
-
     }
 
     private static void storeData(FileReaderParser fileReaderParser, ArrayList<Employe> employes) {
@@ -464,14 +410,10 @@ public class Menu {
         System.out.println("Bienvenu quel est votre nom ? ");
         Scanner scanner = new Scanner(System.in);
         String prenom = scanner.nextLine();
-
         System.out.println("Quel est votre age ?  ");
-
         int age = scanner.nextInt();
-
         visiteur.setAge(age);
         visiteur.setPrenom(prenom);
-
         return visiteur;
     }
 
@@ -491,7 +433,6 @@ public class Menu {
         employes.add(new Employe("Mouna", "Litchi", "cuisine", 1250f));
         employes.add(new Employe("Conquérant", "Marc", "maintenance", 1250f));
         employes.add(new Employe("Chariqmatique", "John", "reservation", 1250f));
-
         return employes;
     }
 
@@ -563,5 +504,4 @@ public class Menu {
         }
         return foundEquipe;
     }
-
 }

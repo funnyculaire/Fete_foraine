@@ -14,9 +14,6 @@ public class Attraction extends Stand{
 
 	private ArrayList<Cadeau> cadeaux;
 
-
-	
-	
 	public Attraction(String nom_stand, String type_stand, String localisation, Equipe equipes, int age, ArrayList<Cadeau> cadeaux) {
 		super(nom_stand, type_stand, localisation, equipes);
 		// TODO Auto-generated constructor stub
@@ -37,7 +34,7 @@ public class Attraction extends Stand{
 	}
 
 	public boolean authorisation(Visiteur visiteur){
-		return age < visiteur.getAge();
+		return age <= visiteur.getAge();
 	}
 
 

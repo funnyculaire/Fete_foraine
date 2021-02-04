@@ -31,11 +31,6 @@ public class FileReaderParser {
                 //do
                 FileWriter writer = new FileWriter(path, true);
                 int numeroReservation = numberOfReservation(path) + 1 ;
-
-                System.out.println("Numero de reservation : " + numeroReservation);
-
-
-
                 DecimalFormatSymbols dfs = new DecimalFormatSymbols();
                 dfs.setDecimalSeparator('.');
                 //ERREUR EN CAS DE VIRGULE ","
@@ -48,16 +43,14 @@ public class FileReaderParser {
 
                 //Donnée à ecrire dans le fichier "data"
                 String dataToWrite = "\nNumero de reservation  : " + numeroReservation
-                        +" Nom :"+ individu.getNom()
-                        +" Prenom :"+ individu.getPrenom()
-                        +" Type Tarification  :"+ reservation.getType_tarification()
-                        +" Prix Total  :" + prixToWrite;
-
+                        +"Nom : "+ individu.getNom()
+                        +"Prenom : "+ individu.getPrenom()
+                        +"Type Tarification : "+ reservation.getType_tarification()
+                        +"Prix Total : " + prixToWrite;
 
                 writer.write(dataToWrite);
                 writer.close();
-
-                System.out.println("Donnée ecrite !");
+                System.out.println("Donnée écrite !");
             }
 
         }
@@ -67,8 +60,6 @@ public class FileReaderParser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 
     public int numberOfReservation(String path){
@@ -204,7 +195,6 @@ public class FileReaderParser {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         return adminData;
     }
 }
